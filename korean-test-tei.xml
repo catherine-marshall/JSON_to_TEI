@@ -1,0 +1,288 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader xml:lang="en">
+  	<fileDesc>
+  		<titleStmt>
+  			<title>Korean test</title>
+  		</titleStmt>
+  		<publicationStmt>
+  			<publisher>chad</publisher>
+  		</publicationStmt>
+  		<sourceDesc>
+  			<p>huckvale</p>
+  		</sourceDesc>
+  	</fileDesc>
+  </teiHeader>
+  <text>
+   <body>
+	<list>
+		<item n="9">1</item>
+		<item n="10">2</item>
+		<item n="11">3</item>
+		<item n="12">4</item>
+		<item n="13">5</item>
+		<item n="14">6</item>
+		<item n="15">7</item>
+		<item n="16">8</item>
+		<item n="17">9</item>
+		<item n="18">10</item>
+		<item n="19">11</item>
+		<item n="20">12</item>
+		<item n="21">13</item>
+		<item n="22">14</item>
+		<item n="23">15</item>
+		<item n="24">16</item>
+		<item n="25">17</item>
+		<item n="26">18</item>
+		<item n="27">19</item>
+		<item n="28">20</item>
+		<item n="29">21</item>
+		<item n="30">22</item>
+		<item n="31">23</item>
+		<item n="32">24</item>
+		<item n="33">25</item>
+	</list>	<div type="errors">
+	 <div type="error">
+	  <list>
+		<item n="segment">10</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">2</item>
+		<note>This can sometimes be translated like this, but it doesn't make sense in this context
+</note>
+		<item n="startIndex">0</item>
+		<item n="endIndex">15</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">11</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">3</item>
+		<note>There's likely a different preposition that can be used here</note>
+		<item n="startIndex">0</item>
+		<item n="endIndex">2</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">12</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">4</item>
+		<note>I think a more natural way of saying this would be "planning for the future so we don't lag behind."</note>
+		<item n="startIndex">119</item>
+		<item n="endIndex">188</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">15</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">major</item>
+		<item n="issueReportId">5</item>
+		<note>This doesn't really makes sense and fails to convey the meaning of the source text</note>
+		<item n="startIndex">54</item>
+		<item n="endIndex">184</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">18</item>
+		<item n="target">target</item>
+		<item n="name">Locale conventions</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">6</item>
+		<note>This is too casual a translation for the source text</note>
+		<item n="startIndex">97</item>
+		<item n="endIndex">105</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">21</item>
+		<item n="target">target</item>
+		<item n="name">Addition</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">7</item>
+		<note>can just be translated as "civil services"</note>
+		<item n="startIndex">219</item>
+		<item n="endIndex">234</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">22</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">major</item>
+		<item n="issueReportId">8</item>
+		<note>This translation muddies the original meaning of the source text</note>
+		<item n="startIndex">131</item>
+		<item n="endIndex">254</item>
+	  </list>
+	 </div>
+	 <div type="error">
+	  <list>
+		<item n="segment">23</item>
+		<item n="target">target</item>
+		<item n="name">Awkward style</item>
+		<item n="severity">minor</item>
+		<item n="issueReportId">9</item>
+		<note>A more natural way of translating this would be something like "As for the digital platform government..."</note>
+		<item n="startIndex">0</item>
+		<item n="endIndex">36</item>
+	  </list>
+	 </div>
+	</div>
+	<div type="metrics">
+	 <div type="metric">
+	  <list>
+		<item n="name">Accuracy</item>
+		<item n="description">Errors occurring when the target text does not accurately correspond to the propositional content of the source text, introduced by distorting, omitting, or adding to the message.</item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">accuracy</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Addition</item>
+		<item n="description">Target content that includes content not present in the source. </item>
+		<note></note>
+		<item n="examples">A translation includes portions of another translation that were inadvertently pasted into the document.</item>
+		<item n="issueId">addition</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Mistranslation</item>
+		<item n="description">Target content that does not accurately represent the source content.</item>
+		<note></note>
+		<item n="examples">A source text states that a medicine should not be administered in doses greater than 200 mg, but the translation states that it should be administered in doses greater than 200 mg (i.e., negation has been omitted).</item>
+		<item n="issueId">mistranslation</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Omission</item>
+		<item n="description">Errors where content is missing from the translation that is present in the source.</item>
+		<note></note>
+		<item n="examples">A paragraph present in the source is missing in the translation.</item>
+		<item n="issueId">omission</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Linguistic conventions</item>
+		<item n="description">Errors related to the linguistic well-formedness of the text, including problems with, for instance, grammaticality and mechanical correctness.</item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">fluency</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Grammar</item>
+		<item n="description">Error that occurs when a text string (sentence, phrase, other) in the translation violates the grammatical rules of the target language.</item>
+		<note></note>
+		<item n="examples">An English text reads: The man was seeing <em>the his wife</em>.</item>
+		<item n="issueId">grammar</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Spelling</item>
+		<item n="description">Error occurring when the letters in a word in an alphabetic language are not arranged in the normally specified order.</item>
+		<note></note>
+		<item n="examples">The German word <em>Zustellung</em> is spelled <em>Zustetlugn</em>.</item>
+		<item n="issueId">spelling</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Punctuation</item>
+		<item n="description">Punctuation incorrect for the locale or style.</item>
+		<note></note>
+		<item n="examples">An English text uses a semicolon where a comma should be used.</item>
+		<item n="issueId">punctuation</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Terminology</item>
+		<item n="description">Errors arising when a term does not conform to normative domain or organizational terminology standards or when a term in the target text is not the correct, normative equivalent of the corresponding term in the source text.</item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">terminology</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Wrong term</item>
+		<item n="description">Use of term that it is not the term a domain expert would use or because it gives rise to a conceptual mismatch.</item>
+		<note></note>
+		<item n="examples">The word <em>river</em> in an English source text is translated into French as <em>rivière</em>. But the river in question flows into the sea, not into a lake or another river, so the correct French translation should have been <em>fleuve</em>. </item>
+		<item n="issueId">wrong-term</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Style</item>
+		<item n="description">Errors occurring in a text that can be grammatical but are inappropriate because they deviate from organizational style guides or exhibit inappropriate language style.</item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">style</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Organizational style</item>
+		<item n="description">Errors occurring where the text violates company/organization-specific style guidelines.</item>
+		<note></note>
+		<item n="examples">Company style states that passive sentences may not be used, but the text uses passive sentences.</item>
+		<item n="issueId">company-style</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Awkward style</item>
+		<item n="description">Style involving excessive wordiness or overly embedded clauses, often due to inappropriate retention of source text style in the target text.</item>
+		<note></note>
+		<item n="examples">A text is written with many embedded clauses and an excessively wordy style. While the meaning can be understood, the text is unnatural and difficult to follow. </item>
+		<item n="issueId">awkward</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Inconsistent with external reference</item>
+		<item n="description">Errors occurring when text fails to conform to an external resource.</item>
+		<note></note>
+		<item n="examples">A translation refers to a court decision but does not accurately reflect the language of the decision.
+A target text translates text that should have been quoted from an existing text.</item>
+		<item n="issueId">external-inconsistency</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Design and markup</item>
+		<item n="description">Errors related to the physical design or presentation of a translation product, including character, paragraph, and UI element formatting and markup, integration of text with graphical elements, and overall page or window layout.</item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">design</item>
+	  </list>
+	 </div>
+	 <div type="metric">
+	  <list>
+		<item n="name">Locale conventions</item>
+		<item n="description">Errors occurring when the translation product violates locale-specific content or formatting requirements for data elements. </item>
+		<note></note>
+		<item n="examples"></item>
+		<item n="issueId">locale-convention</item>
+	  </list>
+	 </div>
+	</div>
