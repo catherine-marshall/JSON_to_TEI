@@ -5,10 +5,10 @@
   			<title>Korean test</title>
   		</titleStmt>
   		<publicationStmt>
-  			<publisher>chad</publisher>
+  			<publisher>chad h</publisher>
   		</publicationStmt>
   		<sourceDesc>
-  			<p>huckvale</p>
+  			<p>korean</p>
   		</sourceDesc>
   	</fileDesc>
   </teiHeader>
@@ -142,6 +142,7 @@
 	<div type="metrics">
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Accuracy</item>
 		<item n="description">Errors occurring when the target text does not accurately correspond to the propositional content of the source text, introduced by distorting, omitting, or adding to the message.</item>
 		<note></note>
@@ -151,6 +152,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">accuracy</item>
 		<item n="name">Addition</item>
 		<item n="description">Target content that includes content not present in the source. </item>
 		<note></note>
@@ -160,6 +162,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">accuracy</item>
 		<item n="name">Mistranslation</item>
 		<item n="description">Target content that does not accurately represent the source content.</item>
 		<note></note>
@@ -169,6 +172,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">accuracy</item>
 		<item n="name">Omission</item>
 		<item n="description">Errors where content is missing from the translation that is present in the source.</item>
 		<note></note>
@@ -178,6 +182,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Linguistic conventions</item>
 		<item n="description">Errors related to the linguistic well-formedness of the text, including problems with, for instance, grammaticality and mechanical correctness.</item>
 		<note></note>
@@ -187,6 +192,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">fluency</item>
 		<item n="name">Grammar</item>
 		<item n="description">Error that occurs when a text string (sentence, phrase, other) in the translation violates the grammatical rules of the target language.</item>
 		<note></note>
@@ -196,6 +202,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">fluency</item>
 		<item n="name">Spelling</item>
 		<item n="description">Error occurring when the letters in a word in an alphabetic language are not arranged in the normally specified order.</item>
 		<note></note>
@@ -205,6 +212,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">fluency</item>
 		<item n="name">Punctuation</item>
 		<item n="description">Punctuation incorrect for the locale or style.</item>
 		<note></note>
@@ -214,6 +222,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Terminology</item>
 		<item n="description">Errors arising when a term does not conform to normative domain or organizational terminology standards or when a term in the target text is not the correct, normative equivalent of the corresponding term in the source text.</item>
 		<note></note>
@@ -223,6 +232,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">terminology</item>
 		<item n="name">Wrong term</item>
 		<item n="description">Use of term that it is not the term a domain expert would use or because it gives rise to a conceptual mismatch.</item>
 		<note></note>
@@ -232,6 +242,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Style</item>
 		<item n="description">Errors occurring in a text that can be grammatical but are inappropriate because they deviate from organizational style guides or exhibit inappropriate language style.</item>
 		<note></note>
@@ -241,6 +252,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">style</item>
 		<item n="name">Organizational style</item>
 		<item n="description">Errors occurring where the text violates company/organization-specific style guidelines.</item>
 		<note></note>
@@ -250,6 +262,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">style</item>
 		<item n="name">Awkward style</item>
 		<item n="description">Style involving excessive wordiness or overly embedded clauses, often due to inappropriate retention of source text style in the target text.</item>
 		<note></note>
@@ -259,6 +272,7 @@
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">style</item>
 		<item n="name">Inconsistent with external reference</item>
 		<item n="description">Errors occurring when text fails to conform to an external resource.</item>
 		<note></note>
@@ -269,6 +283,7 @@ A target text translates text that should have been quoted from an existing text
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Design and markup</item>
 		<item n="description">Errors related to the physical design or presentation of a translation product, including character, paragraph, and UI element formatting and markup, integration of text with graphical elements, and overall page or window layout.</item>
 		<note></note>
@@ -278,6 +293,7 @@ A target text translates text that should have been quoted from an existing text
 	 </div>
 	 <div type="metric">
 	  <list>
+		<item n="parent">None</item>
 		<item n="name">Locale conventions</item>
 		<item n="description">Errors occurring when the translation product violates locale-specific content or formatting requirements for data elements. </item>
 		<note></note>

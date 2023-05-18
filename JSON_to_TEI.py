@@ -17,25 +17,24 @@ file = open(filename, "w", encoding="utf-8")
 file.write("")
 file.close()
 
-tei_header = """<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader xml:lang="en">
-  	<fileDesc>
-  		<titleStmt>
-  			<title>""" + project_name + """</title>
-  		</titleStmt>
-  		<publicationStmt>
-  			<publisher>""" + publisher + """</publisher>
-  		</publicationStmt>
-  		<sourceDesc>
-  			<p>""" + source_desc + """</p>
-  		</sourceDesc>
-  	</fileDesc>
-  </teiHeader>
-  <text>
-   <body>
-	<list>"""
-
-print(tei_header, file=open(filename, "a", encoding="utf-8"))
+print('<TEI xmlns="http://www.tei-c.org/ns/1.0">'
+      '  <teiHeader xml:lang="en">'
+      '\t<fileDesc>'
+      '\t\t<titleStmt>'
+      '\t\t\t<title>' + project_name + '</title>'
+      '\t\t</titleStmt>'
+      '\t\t<publicationStmt>'
+      '\t\t\t<publisher>' + publisher + '</publisher>'
+      '\t\t</publicationStmt>'
+      '\t\t<sourceDesc>'
+      '\t\t\t<p>' + source_desc + '</p>'
+      '\t\t</sourceDesc>'
+      '\t</fileDesc>'
+      '  </teiHeader>'
+      '  <text>'
+      '   <body>'
+      '\t<list>',
+      file=open(filename,"a", encoding="utf-8"))
 
 key = json_load["key"]
 
@@ -73,7 +72,7 @@ print('\t</div>\n'
 for metric in metrics:
     print('\t <div type="metric">\n'
           '\t  <list>\n'
-          # '\t\t<item n="parent">' + metric["parent"] + '</item>\n'
+          '\t\t<item n="parent">' + str(metric["parent"]) + '</item>\n'
           '\t\t<item n="name">' + metric["name"] + '</item>\n'
           '\t\t<item n="description">' + metric["description"] + '</item>\n'
           '\t\t<note>' + metric["notes"] + '</note>\n'
