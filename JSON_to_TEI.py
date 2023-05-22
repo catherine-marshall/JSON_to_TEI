@@ -22,26 +22,23 @@ file.close()
 
 # This prints the header
 project_name = json_load["projectName"]
-tei_header = """<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader xml:lang="en">
-  	<fileDesc>
-  		<titleStmt>
-  			<title>""" + project_name + """</title>
-  		</titleStmt>
-  		<publicationStmt>
-  			<publisher>""" + publisher + """</publisher>
-  		</publicationStmt>
-  		<sourceDesc>
-  			<p>""" + source_desc + """</p>
-  		</sourceDesc>
-  	</fileDesc>
-  </teiHeader>
-  <text>
-   <body>
-	<list>"""
-
-print(tei_header, file=open(filename, "a", encoding="utf-8"))
-
+print('<TEI xmlns="http://www.tei-c.org/ns/1.0">\n'
+      '  <teiHeader xml:lang="en">\n'
+      '\t<fileDesc>\n'
+      '\t\t<titleStmt>\n'
+      '\t\t\t<title>' + project_name + '</title>\n'
+      '\t\t</titleStmt>\n'
+      '\t\t<publicationStmt>\n'
+      '\t\t\t<publisher>' + publisher + '</publisher>\n'
+      '\t\t</publicationStmt>\n'
+      '\t\t<sourceDesc>\n'
+      '\t\t\t<p>' + source_desc + '</p>\n'
+      '\t\t</sourceDesc>\n'
+      '\t</fileDesc>\n'
+      '  </teiHeader>\n'
+      '  <text>\n'
+      '   <body>\n'
+      '\t<list>', file=open(filename, "a", encoding="utf-8"))
 
 # This prints the key
 key = json_load["key"]
