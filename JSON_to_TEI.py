@@ -1,5 +1,6 @@
 # This is the updated version
 import json
+import re
 
 filename = "Korean_test_report.json"
 
@@ -123,26 +124,41 @@ print('\t</linkGrp>', file=open(filename, "a", encoding="utf-8"))
 # This prints the source and target texts
 source_text = json_load["segments"]["source"]
 target_text = json_load["segments"]["target"]
+chars = '&<>\"ˋ'
+chars_dict = {'&': '&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', 'ˋ': '&apos;'}
 
+# Prints source text
 print('\t<div type="volume" xml:id="x" xml:lang ="' + source_lang + '">\n'
       '\t  <p>', file=open(filename, "a", encoding="utf-8"))
 for seg in seg_list:
       if source_text[int(seg) - 1][-1] == "\n" or source_text[int(seg) - 1][-1] == "\r":
             source_text[int(seg) - 1] = source_text[int(seg) - 1][:-1]
-      print('\t\t<s xml:id="x' + seg + '">' + source_text[int(seg) - 1] + '</s>', file=open(filename, "a", encoding="utf-8"))
+      segment = source_text[int(seg) - 1]
+      for char in chars:
+            if char in segment:
+                  segment = re.sub(char, chars_dict[char], segment)
+                  print(segment)
+      print('\t\t<s xml:id="x' + seg + '">' + segment + '</s>', file=open(filename, "a", encoding="utf-8"))
 print('\t  </p>\n'
       '\t</div>', file=open(filename, "a", encoding="utf-8"))
 
+# Prints target text
 print('\t<div type="volume" xml:id="y" xml:lang ="' + target_lang + '">\n'
       '\t  <p>', file=open(filename, "a", encoding="utf-8"))
 for seg in seg_list:
       if target_text[int(seg) - 1][-1] == "\n" or target_text[int(seg) - 1][-1] == "\r":
             target_text[int(seg) - 1] = target_text[int(seg) - 1][:-1]
-      print('\t\t<s xml:id="x' + seg + '">' + target_text[int(seg) - 1] + '</s>', file=open(filename, "a", encoding="utf-8"))
+      segment = target_text[int(seg) - 1]
+      for char in chars:
+            if char in segment:
+                  print("HERE: " + char)
+                  segment = re.sub(char, chars_dict[char], segment)
+                  print(segment)
+      print('\t\t<s xml:id="x' + seg + '">' + segment + '</s>', file=open(filename, "a", encoding="utf-8"))
 print('\t  </p>\n'
       '\t</div>', file=open(filename, "a", encoding="utf-8"))
 
-# This prints the closing tags at the end
+# This prints out the closing tags at the end
 print('   </body>\n'
       '  </text>\n'
       '</TEI>', file=open(filename, "a", encoding="utf-8"))
