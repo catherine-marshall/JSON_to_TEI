@@ -1,4 +1,3 @@
-# This is the updated version
 import json
 import re
 import os
@@ -6,25 +5,36 @@ import os
 # Working directory
 os.chdir(r"C:\Users\cem327\Downloads\JSON")
 
+# Defines the language codes
+language_codes = {"A": "AR", "C": "ZH", "Cr": "HR", "D": "NL", "E": "EN", "Fi": "FI", "F": "FR", "G": "DE", "H": "HU", "I": "IT", "J": "JA", "L": "PL", "P": "PT", "R": "RU", "S": "ES", "U": "UK"}
+
 # Gets all JSON files from a directory
 filenames = [f for f in os.listdir() if f.endswith(".json")]
 
 for filename in filenames:
 
+      # This gets the language codes
+      split = filename.split("-")
+      split = split[0]
+      if split[0] == "E":
+            source_lang = language_codes[split[0]]
+            target_lang = language_codes[split[1:]]
+      else:
+            source_lang = language_codes[split[:-1]]
+            target_lang = language_codes[split[-1]]
+
       # This opens and retrieves the text from the JSON file
       with open(filename, 'r', encoding='utf-8') as json_file:
             json_load = json.load(json_file)
 
-      # These are all the input questions
-      print ("The filename is : " + filename)
+
+      # Potential input questions
       # publisher = input("What is the publisher's name? ")
       # source_desc = input("Provide a brief description for this document: ")
-      source_lang = input("What is the language code of the source language? ")
-      target_lang = input("What is the language code of the target language? ")
+
 
       # This creates the output file
       filename = re.sub(".json", "", filename)
-      print(filename)
       filename = filename + ".xml"
       file = open(filename, "w", encoding="utf-8")
       file.write("")
@@ -68,21 +78,72 @@ for filename in filenames:
 
       # This prints the error info
       for error in errors:
-          if error["note"][-1] == '\n':
-                error["note"] = error["note"][:-1]
-          print('\t <div type="error">\n'
-                '\t  <list>\n'
-                '\t\t<item n="segment">' + error["segment"] + '</item>\n'
-                '\t\t<item n="target">' + error["target"] + '</item>\n'
-                '\t\t<item n="name">' + error["name"] + '</item>\n'
-                '\t\t<item n="severity">' + error["severity"] + '</item>\n'
-                '\t\t<item n="issueReportId">' + error["issueReportId"] + '</item>\n'
-                '\t\t<note>' + error["note"] + '</note>\n'
-                '\t\t<item n="startIndex">' + str(error["highlighting"]["startIndex"]) + '</item>\n'
-                '\t\t<item n="endIndex">' + str(error["highlighting"]["endIndex"]) + '</item>\n'
-                '\t  </list>\n'
-                '\t </div>',
-                file=open(filename, "a", encoding="utf-8"))
+            repeated = False
+            discontinuous = False
+            semicolon_count = 0
+            ata_code = ""
+            ata_points = ""
+            ata_note = ""
+            other_code = ""
+            if error["note"][-1] == '\n':
+                  error["note"] = error["note"][:-1]
+            if error["note"][2:5] =="@RE":
+                  repeated = True
+            if error["note"][2:5] =="@DE":
+                  discontinuous = True
+            for char in error["note"]:
+                  if semicolon_count == 2:
+                        ata_code += char
+                  if semicolon_count == 3:
+                        ata_points += char
+                  if semicolon_count == 4:
+                        ata_note += char
+                  if semicolon_count == 5:
+                        print("The filename is : " + filename)
+                        print("THERE IS AN ERROR WITH THE NOTES IN THIS FILE.\nNote: " + error["note"])
+                        exit()
+                  if char == ";":
+                        semicolon_count += 1
+            if ";" in ata_code:
+                  ata_code = re.sub(";", "", ata_code)
+            if ata_code[0] == " ":
+                  ata_code = ata_code[1:]
+            if ";" in ata_points:
+                  ata_points = re.sub(";", "", ata_points)
+            if ata_points[0] == " ":
+                  ata_points = ata_points[1:]
+            if len(ata_note) > 0:
+                  if ata_note[0] == " ":
+                        ata_note = ata_note[1:]
+            if "grader also labeled the error as" in ata_note:
+                  i = -1
+                  while ata_note[i] != " ":
+                        other_code += ata_note[i]
+                        i = i - 1
+                  other_code = other_code[::-1]
+                  ata_code += "/" + other_code
+                  ata_note = re.sub(",? ?(T|t)he grader also labeled the error as .+", "", ata_note)
+                  print("ATA code: " + ata_code)
+                  print("ATA note: " + ata_note)
+
+
+            print('\t <div type="error">\n'
+                  '\t  <list>\n'
+                  '\t\t<item n="segment">' + error["segment"] + '</item>\n'
+                  '\t\t<item n="target">' + error["target"] + '</item>\n'
+                  '\t\t<item n="name">' + error["name"] + '</item>\n'
+                  '\t\t<item n="severity">' + error["severity"] + '</item>\n'
+                  '\t\t<item n="issueReportId">' + error["issueReportId"] + '</item>\n'
+                  '\t\t<item n="repeated_error">' + str(repeated) + '</item>\n'
+                  '\t\t<item n="discontinuous_error">' + str(discontinuous) + '</item>\n'
+                  '\t\t<item n="ata_code">' + ata_code + '</item>\n'
+                  '\t\t<item n="ata_points">' + ata_points + '</item>\n'   
+                  '\t\t<item n="ata_note">' + ata_note + '</item>\n'
+                  '\t\t<item n="startIndex">' + str(error["highlighting"]["startIndex"]) + '</item>\n'
+                  '\t\t<item n="endIndex">' + str(error["highlighting"]["endIndex"]) + '</item>\n'
+                  '\t  </list>\n'
+                  '\t </div>',
+                  file=open(filename, "a", encoding="utf-8"))
 
 
       # This prints the metric
@@ -92,8 +153,18 @@ for filename in filenames:
             '\t<div type="metrics">',
             file=open(filename, "a", encoding="utf-8"))
 
+      # This gets rid of any line breaks in the metric
       for metric in metrics:
-          print('\t <div type="metric">\n'
+            if "\n" in metric["examples"]:
+                  metric["examples"] = re.sub(("\n"), " ", metric["examples"])
+            if "\r" in metric["examples"]:
+                  metric["examples"] = re.sub(("\r"), " ", metric["examples"])
+            if "\n" in metric["notes"]:
+                  metric["notes"] = re.sub(("\n"), " ", metric["notes"])
+            if "\r" in metric["notes"]:
+                  metric["notes"] = re.sub(("\r"), " ", metric["notes"])
+
+            print('\t <div type="metric">\n'
                 '\t  <list>\n'
                 '\t\t<item n="parent">' + str(metric["parent"]) + '</item>\n'
                 '\t\t<item n="name">' + metric["name"] + '</item>\n'
