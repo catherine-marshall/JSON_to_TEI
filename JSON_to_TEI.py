@@ -1,8 +1,13 @@
 # This is the updated version
 import json
 import re
+import os
 
-filename = "Korean_test_report.json"
+# This acquires the target file from the user
+file_path = input("What is the file path for the target file?")
+os.chdir(file_path)
+filename = input("What is the name of the target JSON file?")
+
 
 # This opens and retrieves the text from the JSON file
 with open(filename, 'r', encoding='utf-8') as json_file:
@@ -16,13 +21,13 @@ source_lang = input("What is the language code of the source language? ")
 target_lang = input("What is the language code of the target language? ")
 
 # This creates the output file
-filename = "korean-test-tei.xml"
+project_name = json_load["projectName"]
+filename = project_name + ".xml"
 file = open(filename, "w", encoding="utf-8")
 file.write("")
 file.close()
 
 # This prints the header
-project_name = json_load["projectName"]
 print('<TEI xmlns="http://www.tei-c.org/ns/1.0">\n'
       '  <teiHeader xml:lang="en">\n'
       '\t<fileDesc>\n'
