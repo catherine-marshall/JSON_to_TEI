@@ -2,11 +2,6 @@ import json
 import re
 import os
 
-# # This acquires the target file from the user
-# file_path = input("What is the file path for the target file?")
-# os.chdir(file_path)
-# filename = input("What is the name of the target JSON file?")
-
 # Working directory
 os.chdir(r"C:\Users\cem327\Downloads\JSON")
 
@@ -16,34 +11,15 @@ language_codes = {"A": "AR", "C": "ZH", "Cr": "HR", "D": "NL", "E": "EN", "Fi": 
 # Gets all JSON files from a directory
 filenames = [f for f in os.listdir() if f.endswith(".json")]
 
-# This creates the output file
-project_name = json_load["projectName"]
-filename = project_name + ".xml"
-file = open(filename, "w", encoding="utf-8")
-file.write("")
-file.close()
+# Potential input questions
+# publisher = input("What is the publisher's name? ")
+# source_desc = input("Provide a brief description for this document: ")
+year = input("What year are these exams? ")
 
-# This prints the header
-print('<TEI xmlns="http://www.tei-c.org/ns/1.0">\n'
-      '  <teiHeader xml:lang="en">\n'
-      '\t<fileDesc>\n'
-      '\t\t<titleStmt>\n'
-      '\t\t\t<title>' + project_name + '</title>\n'
-      '\t\t</titleStmt>\n'
-      '\t\t<publicationStmt>\n'
-      '\t\t\t<publisher>' + publisher + '</publisher>\n'
-      '\t\t</publicationStmt>\n'
-      '\t\t<sourceDesc>\n'
-      '\t\t\t<p>' + source_desc + '</p>\n'
-      '\t\t</sourceDesc>\n'
-      '\t</fileDesc>\n'
-      '  </teiHeader>\n'
-      '  <text>\n'
-      '   <body>\n'
-      '\t<list>', file=open(filename, "a", encoding="utf-8"))
 
 for filename in filenames:
-
+      print(filename)
+      total_points = 0
       # This gets the language codes
       split = filename.split("-")
       split = split[0]
@@ -57,12 +33,6 @@ for filename in filenames:
       # This opens and retrieves the text from the JSON file
       with open(filename, 'r', encoding='utf-8') as json_file:
             json_load = json.load(json_file)
-
-
-      # Potential input questions
-      # publisher = input("What is the publisher's name? ")
-      # source_desc = input("Provide a brief description for this document: ")
-
 
       # This creates the output file
       filename = re.sub(".json", "", filename)
@@ -89,6 +59,11 @@ for filename in filenames:
             '  </teiHeader>\n'
             '  <text>\n'
             '   <body>\n'
+            '\t<list>\n'
+            '\t\t<item n="year">' + year + '</item>\n'
+            '\t\t<item n="comment"></item>\n'
+            '\t\t<item n="keyword"></item>\n'
+	        '\t</list>\n'
             '\t<list>', file=open(filename, "a", encoding="utf-8"))
 
       # This prints the key
@@ -108,6 +83,7 @@ for filename in filenames:
 
 
       # This prints the error info
+
       for error in errors:
             repeated = False
             discontinuous = False
@@ -157,7 +133,6 @@ for filename in filenames:
                   print("ATA code: " + ata_code)
                   print("ATA note: " + ata_note)
 
-
             print('\t <div type="error">\n'
                   '\t  <list>\n'
                   '\t\t<item n="segment">' + error["segment"] + '</item>\n'
@@ -175,6 +150,13 @@ for filename in filenames:
                   '\t  </list>\n'
                   '\t </div>',
                   file=open(filename, "a", encoding="utf-8"))
+
+            total_points += int(ata_points)
+            print(total_points)
+      if total_points <= 17:
+            passed = True
+      else:
+            passed = False
 
 
       # This prints the metric
@@ -220,6 +202,7 @@ for filename in filenames:
       print('\t<div type="scores">\n'
             '\t <list>\n'
             '\t \t<item n="compositeScore">' + comp_score + '</item>\n'
+            '\t \t<item n="passed">' + str(passed) + '</item>\n'
             '\t </list>\n'
             '\t</div>',
             file=open(filename, "a", encoding="utf-8"))
